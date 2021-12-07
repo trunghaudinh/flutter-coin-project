@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_coin_project/components/widget_statistics.dart';
@@ -28,6 +29,30 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Container(
+              height: 150,
+              child: LineChart(
+                LineChartData(
+                    minX: 0,
+                    maxX: 11,
+                    minY: 0,
+                    maxY: 6,
+                    lineBarsData: [
+                      LineChartBarData(spots: [
+                        FlSpot(0, 3),
+                        FlSpot(2.6, 2),
+                        FlSpot(4.9, 5),
+                        FlSpot(6.8, 2.5),
+                        FlSpot(8, 4),
+                        FlSpot(9.5, 3),
+                        FlSpot(11, 4),
+                      ])
+                    ]),
+                swapAnimationDuration: Duration(milliseconds: 150),
+                // Optional
+                swapAnimationCurve: Curves.linear, // Optional
+              ),
+            ),
             Text("${coin.symbol} Statistics",
                 style: Theme.of(context)
                     .textTheme
